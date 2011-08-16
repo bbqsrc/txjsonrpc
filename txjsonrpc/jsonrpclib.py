@@ -1,11 +1,14 @@
 """
-Requires simplejson; can be downloaded from 
+Python 2.5 and lower requires simplejson; can be downloaded from 
 http://cheeseshop.python.org/pypi/simplejson
 """
 import xmlrpclib
 from datetime import datetime
 
-import simplejson
+try:
+	import json
+except:
+	import simplejson as json
 
 
 # From xmlrpclib.
@@ -36,7 +39,7 @@ class NoSuchFunction(Fault):
     """
 
 
-class JSONRPCEncoder(simplejson.JSONEncoder):
+class JSONRPCEncoder(json.JSONEncoder):
     """
     Provide custom serializers for JSON-RPC.
     """
@@ -70,11 +73,11 @@ def dumps(obj, **kwargs):
             obj = error
     else:
         obj = {"result": result, "error": error, "id": id}
-    return simplejson.dumps(obj, cls=JSONRPCEncoder, **kwargs)
+    return json.dumps(obj, cls=JSONRPCEncoder, **kwargs)
 
 
 def loads(string, **kws):
-    unmarshalled = simplejson.loads(string, **kws)
+    unmarshalled = json.loads(string, **kws)
     # XXX there's going to need to be some version-conditional code here...
     # for versions greater than VERSION_PRE1, we'll have to check for the
     # "error" key, not the "fault" key... and then raise if "fault" is not
