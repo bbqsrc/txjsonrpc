@@ -1,14 +1,15 @@
-============
+txJSON-RPC
+==========
+
 Introduction
-============
+------------
 
 txJSON-RPC allows you to create async Python JSON-RPC servers and clients
 either over HTTP or directly on TCP with the Netstring protocol. txJSON-RPC is
 written in Twisted.
 
-========
 Features
-========
+--------
 
 * Asynchronous JSON-RPC server and client code.
 
