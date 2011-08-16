@@ -14,5 +14,5 @@ Features
 
 * Support for HTTP and TCP (Netstring) JSON-RPC.
 
-* A jsonrpclib similar to the one for XLM-RPC offered by the Python standard
+* A jsonrpclib similar to the one for XML-RPC offered by the Python standard
   library.
